@@ -50,7 +50,11 @@ CREATE TABLE payments (
     amount DECIMAL(10, 2),
     method VARCHAR(20)
 );
- 
+
+
+-- #INSERT VALUES FOR ALL TABLES
+
+
 -- Insert Customers
 INSERT INTO customers (name, email, city, signup_date) VALUES
 ('Alice Smith', 'alice@example.com', 'New York', '2023-01-10'),
@@ -141,6 +145,8 @@ INSERT INTO payments (order_id, payment_date, amount, method) VALUES
 (13, '2023-04-13', 200.00, 'PayPal'),
 (14, '2023-04-14', 20.00, 'Credit Card');
 
+-- #TASK_1 .Use SELECT, WHERE, ORDER BY, GROUP BY
+    
 select * from customers
 
 select name,
@@ -184,6 +190,9 @@ order by
 total_spent desc;
 
 
+-- #TASK_2 Use JOINS (INNER, LEFT, RIGHT)
+
+
 -- join inner,left,right
 select c.customer_id,
 c.name,
@@ -191,8 +200,6 @@ order_id,
 order_date
 from customers as c
 inner join orders as o on c.customer_id=o.customer_id;
-
-
 
 -- left join
 select * from products
@@ -205,8 +212,7 @@ category_name
 from products as p
 left join categories as c on p.category_id=c.category_id
 
-
-
+    
 -- right join 
 select *from payments;
 select * from orders;
@@ -224,6 +230,10 @@ FROM
     orders AS o
 RIGHT JOIN 
     payments AS p ON o.order_id = p.order_id;
+
+
+
+-- #TASK_3 subqueries
 
 
 -- subquery
@@ -257,6 +267,10 @@ ORDER BY
 
 
 
+-- #TASK_4 Use aggregate functions (SUM, AVG)
+
+
+    
 -- aggregate function
 SELECT 
     AVG(order_total) AS average_order_value
@@ -273,6 +287,11 @@ FROM (
 ) AS order_totals;
 
 
+
+-- #TASK_5 Create views for analysis
+
+
+    
 -- customer_spending_view
 CREATE VIEW customer_spending_view AS
 SELECT 
@@ -289,6 +308,9 @@ GROUP BY
     c.customer_id, c.name;
 
 SELECT * FROM customer_spending_view WHERE total_spent > 1000;
+
+
+-- #TASK_6 Optimize queries with indexes
 
 -- Index Use Cases from Your Schema
 CREATE INDEX idx_customers_email ON customers(email);
