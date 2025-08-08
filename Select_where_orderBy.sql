@@ -1,0 +1,6 @@
+"product_id","name","price"
+1,"Laptop","1200.00"
+2,"Smartphone","800.00"
+3,"Tablet","300.00"
+14,"Monitor","200.00"
+15,"Headphones","100.00"
